@@ -4,6 +4,7 @@ const output = document.getElementById('random-words');
 const repeatWord = 8;
 let arrayWords = [];
 let generatedPhrase;
+let loading = true;
 
 // Async function wait all data 
 async function waitData() {
@@ -14,9 +15,14 @@ async function waitData() {
     }
     generatedPhrase = arrayWords.join(" "); 
     output.innerHTML = `<div><p>${generatedPhrase}</p></div>`;
+    loading = false;
   } catch (error) {
     console.log(error);
   }
+}
+
+if(loading){
+  output.innerHTML = `<div><p>Caricamento...</p></div>`;
 }
 
 waitData();
